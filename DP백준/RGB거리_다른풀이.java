@@ -3,7 +3,7 @@ package DP백준;
 import java.util.Scanner;
 
 //1149 for 문제
-public class RGH거리_다른풀이 {
+public class RGB거리_다른풀이 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
