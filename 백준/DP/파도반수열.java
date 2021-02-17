@@ -1,4 +1,4 @@
-package DP백준;
+package 백준.DP;
 
 
 import java.io.BufferedWriter;

@@ -1,4 +1,4 @@
-package greedy백준;
+package 백준.Greedy;
 
 import java.util.Scanner;
 //1946번
