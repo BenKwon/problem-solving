@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.util.Scanner;
 
 //9461
-public class 파도반수열 {
+public class 파도반수열_9461 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int test_num = scanner.nextInt();

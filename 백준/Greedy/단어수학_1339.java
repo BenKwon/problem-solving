@@ -17,7 +17,7 @@ n의 자리 가중치 = 10의 n제곱
 참고) HashMap의 keyset을 value순으로 정렬하는 법을 검색해서 참고하였다.
  */
 //1339번
-public class 단어수학 {
+public class 단어수학_1339 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

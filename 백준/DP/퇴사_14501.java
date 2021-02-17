@@ -12,7 +12,7 @@ import java.util.Scanner;
 k=N-1 -> dp[k]=P[k] (if k +T[k] <=7) or dp[k]=0 if(k+T[k]>7 )
 Bottom Up방식으로 해결결
  */
-public class 퇴사 {
+public class 퇴사_14501 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();

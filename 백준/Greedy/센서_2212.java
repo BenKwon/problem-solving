@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 //2212번
-public class 센서{
+public class 센서_2212 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int sensor_num = scanner.nextInt(); //센서의 갯수

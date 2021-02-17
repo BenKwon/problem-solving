@@ -3,7 +3,7 @@ package 백준.Greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 //2217번 백준
-public class 로프 {
+public class 로프_2217 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();

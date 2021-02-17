@@ -6,7 +6,7 @@ import java.util.Scanner;
 최장 증가 부분 수열 문제
  */
 //2352
-public class 반도체설계 {
+public class 반도체설계_2352 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();

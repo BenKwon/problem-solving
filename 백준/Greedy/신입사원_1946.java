@@ -2,7 +2,7 @@ package 백준.Greedy;
 
 import java.util.Scanner;
 //1946번
-public class 신입사원 {
+public class 신입사원_1946 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int test_num = scanner.nextInt();

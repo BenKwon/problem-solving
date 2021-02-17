@@ -2,7 +2,7 @@ package 백준.DP;
 import java.util.Scanner;
 
 //1149번
-public class RGB거리 {
+public class RGB거리_1149 {
     public static int num = 0;
     public static int[][] house;
     public static int[][] dp_store;

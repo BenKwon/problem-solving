@@ -3,7 +3,7 @@ package 백준.Greedy;
 import java.util.Scanner;
 
 //2847번
-public class 게임을만든동준이 {
+public class 게임을만든동준이_2847 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int game_num = scanner.nextInt();

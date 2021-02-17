@@ -3,15 +3,15 @@ package 백준.Greedy;
 import java.util.Scanner;
 
 //1541번
-public class 잃어버린괄호 {
+public class 잃어버린괄호_1541 {
     public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
         String math = scanner.nextLine();
-        int length_math = math.length();
+//        int length_math = math.length();
         StringBuilder sb = new StringBuilder();
-        int tmp_i;
-        int flag = 0;
-        int m_flag = 0;
+//        int tmp_i;
+//        int flag = 0;
+//        int m_flag = 0;
         String[] first = math.split("-");
         int len_split = first.length;
         int result = 0;
