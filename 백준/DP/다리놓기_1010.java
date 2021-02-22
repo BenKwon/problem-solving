@@ -1,8 +1,8 @@
 package 백준.DP;
 
 import java.util.Scanner;
-
-public class 다리놓기 {
+//1010
+public class 다리놓기_1010 {
     public static int[][] dp_store;
     public static int[][] tests;
     public static int[][] visit;
@@ -33,7 +33,6 @@ public class 다리놓기 {
         }
 
     }
-
     //test = [N,M]
     public static int solution(int row_n, int col_m, int test[]) {
         if (dp_store[row_n][col_m] == 0 && visit[row_n][col_m] == 0) {
@@ -42,7 +41,6 @@ public class 다리놓기 {
                 visit[row_n][col_m] = 1;
             }
         }
-
         return dp_store[row_n][col_m];
     }
 }
