@@ -4,7 +4,7 @@ public class ArrayRotation {
     public static void main(String[] args) {
         int[] a = {};
         a = solution(a,4);
-
+        System.out.println("a = " + a);
         return;
     }
     public static int[] solution(int[] A, int K) {
