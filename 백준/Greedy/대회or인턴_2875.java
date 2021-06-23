@@ -17,15 +17,10 @@ public class 대회or인턴_2875 {
             }
         }
 
-//        if (M < 2) {
-//            System.out.println(0);
-//        }
         if (M/2 > N) {
             System.out.println(N);
         } else {
             System.out.println(M/2);
         }
-//        System.out.println("K = " + K);
-//        System.out.println("M = " + M + " N = " + N);
     }
 }
