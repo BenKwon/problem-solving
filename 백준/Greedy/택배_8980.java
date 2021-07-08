@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
+/**
+ * 각 지점에서 실을수 있는 최대 무게에서
+ *
+ * 중요한건 도착지가 가까울수록 좋은것이다.
+ */
 public class 택배_8980 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

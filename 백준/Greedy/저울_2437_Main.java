@@ -44,10 +44,7 @@ public class 저울_2437_Main {
         }
         int solution = 1;
         for(int i = 1 ; i < n ;  i++){
-//            System.out.println("==========================");
             int next = weight[i];
-//            System.out.println("next = " + next);
-//            System.out.println("max = " + max);
             if(min + next > max + 1 && next != max +1){
                 solution = max + 1;
                 break;
@@ -57,8 +54,7 @@ public class 저울_2437_Main {
         }
 
         System.out.println(solution);
-
-
+        br.close();
 
     }
 }
