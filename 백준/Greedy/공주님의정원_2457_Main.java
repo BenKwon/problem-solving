@@ -60,7 +60,6 @@ public class 공주님의정원_2457_Main {
                 break;
             }
         }
-        int idx = 0;
         int max = 0;
         int sol = 1;
         if(tmp == n){
