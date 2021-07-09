@@ -63,5 +63,7 @@ public class PassPortControl_16288_Main {
             }
         }
         System.out.println(sol);
+
+        br.close();
     }
 }
