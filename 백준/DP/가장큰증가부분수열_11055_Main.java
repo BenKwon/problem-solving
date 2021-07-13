@@ -38,6 +38,6 @@ public class 가장큰증가부분수열_11055_Main {
             }
             if(max < dp[i][1]) max = dp[i][1];
         }
-        System.out.println(max);
+        System. out.println(max);
     }
 }
