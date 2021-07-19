@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_내리막길_1520 {
+public class Main_내리막길_틀린버전_1520 {
     public static int[][] graph;
     public static int n, m; // m = row , n = col
     public static int[][] visit;
@@ -15,15 +15,15 @@ public class Main_내리막길_1520 {
     public static int[] col_move = new int[]{0, 0, -1, 1};
 
     public static int dfs(int x, int y) {
-        if(x == m- 1 && y == n-1){
-            return 1;
+//        if(x == m- 1 && y == n-1){
+//            return 1;
+//        }
+        if (x == m - 2 && y == n-1) {
+            return dp[m - 2][n-1];
         }
-//        if (x == m - 2 && y == n-1) {
-//            return dp[m - 2][n-1];
-//        }
-//        if (x == m -1&& y == n - 2) {
-//            return dp[m-1][n-2];
-//        }
+        if (x == m -1&& y == n - 2) {
+            return dp[m-1][n-2];
+        }
         int value = 0;
         visit[x][y] = 1;
         for (int i = 0; i < 4; i++) {
@@ -58,23 +58,23 @@ public class Main_내리막길_1520 {
             System.out.println(1);
             return;
         }
-//        if(m == 1){
-//            if (graph[m-1][n - 2] > graph[m-1][n-1])
-//                dp[m-1][n - 2] = 1;
-//            visit[m-1][n-2] = 1;
-//        }
-//        else if(n == 1){
-//            if (graph[m - 2][n-1] > graph[m-1][n-1])
-//                dp[m - 2][n-1] = 1;
-//            visit[m-2][n-1] = 1;
-//        }else{
-//            if (graph[m-1][n - 2] > graph[m-1][n-1])
-//                dp[m-1][n - 2] = 1;
-//            visit[m-1][n-2] = 1;
-//            if (graph[m - 2][n-1] > graph[m-1][n-1])
-//                dp[m - 2][n-1] = 1;
-//            visit[m-2][n-1] = 1;
-//        }
+        if(m == 1){
+            if (graph[m-1][n - 2] > graph[m-1][n-1])
+                dp[m-1][n - 2] = 1;
+            visit[m-1][n-2] = 1;
+        }
+        else if(n == 1){
+            if (graph[m - 2][n-1] > graph[m-1][n-1])
+                dp[m - 2][n-1] = 1;
+            visit[m-2][n-1] = 1;
+        }else{
+            if (graph[m-1][n - 2] > graph[m-1][n-1])
+                dp[m-1][n - 2] = 1;
+            visit[m-1][n-2] = 1;
+            if (graph[m - 2][n-1] > graph[m-1][n-1])
+                dp[m - 2][n-1] = 1;
+            visit[m-2][n-1] = 1;
+        }
 
 
 
