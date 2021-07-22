@@ -42,8 +42,6 @@ public class Main_내려가기_2096 {
                     max_dp[i][j] = Math.max(max_dp[i + 1][j-1], max_dp[i + 1][j]) + graph[i][j];
                 }
             }
-
-
         }
 
         int min_sol = Math.min(min_dp[0][2],Math.min(min_dp[0][0], min_dp[0][1]));
