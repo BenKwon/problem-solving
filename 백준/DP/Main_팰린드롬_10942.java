@@ -43,7 +43,5 @@ public class Main_팰린드롬_10942 {
         bw.flush();
         bw.close();
         br.close();
-
-
     }
 }

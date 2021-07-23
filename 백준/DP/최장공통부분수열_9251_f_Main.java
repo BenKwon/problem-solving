@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- *
+ * %
  */
-public class 최장공통부분수열_9251_Main {
+public class 최장공통부분수열_9251_f_Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str1 = br.readLine();
