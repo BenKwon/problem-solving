@@ -12,8 +12,7 @@ import java.io.*;
  * 또한 2뒤에 6보다 큰수가 오면 해독할수없다.
  *
  * 중요한 점은 0이 나왔을때 0의 앞은 항상 1또는 2이여야하고 암호를 해독할때 0은 항상 자기 앞의 정수와
- * 함께 붙여서 해독되어야 한다는 점
- */
+ * 함께 붙여서 해독되어야 한다는 점점 */
 public class Main_암호코드_2011 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
