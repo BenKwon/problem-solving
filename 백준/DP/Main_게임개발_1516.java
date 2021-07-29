@@ -6,6 +6,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+/**
+ * 풀면서 간과했던점 : 만약 노드 4번이 1번 2번 3번 모두 지어지고 나서 지어져야 한다면
+ * 1 번 2 번 3번 노드 각각까지 걸렸던 weight중에 가장 max인 weight에 노드 4번의 weight를 더해 dp를 구해야한다.
+ * 노드 4번은 1번2번3번모두 지어진 상태에서만 지어져야하기 때문에 1번2번3번의 최솟값이 아닌 가장 최댓값에다 더해져야 한다.
+ * 즉 1번2번3번노드중에 2번노드가 가장 늦게 지어지면 이 2번노드가 지어지고 나서야 비로소 4번 노드가 지어질수있다.
+ */
 public class Main_게임개발_1516 {
     public static int n;
     public static Queue<Integer> queue = new LinkedList<>();
