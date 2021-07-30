@@ -22,7 +22,6 @@ public class Main_격자상의경로_10164 {
         for (int i = 0; i < 2; i++) {
             int n_row = row + row_move[i];
             int n_col = col + col_move[i];
-//            System.out.printf("nrow : %d , ncol: %d \n",n_row,n_col);
             if (n_row > k_row || n_col > k_col || n_row < 0 || n_col < 0) continue;
             sum += dfs1(n_row, n_col);
         }

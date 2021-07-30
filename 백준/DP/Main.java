@@ -2,60 +2,75 @@ package 백준.DP;
 import java.io.*;
 import java.util.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Main {
-    static int N;
-    static int[][] map;
-    static int[] dx = { 0, 1, 1 };
-    static int[] dy = { 1, 0, 1 };
-    static int answer = 0;
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+    static class Step{
+        int emoticon_num;
+        int clipboard_num;
+        int time;
 
-        N = Integer.parseInt(st.nextToken());
-        map = new int[N + 1][N + 1];
-
-        for (int i = 1; i <= N; i++) {
-            st = new StringTokenizer(br.readLine());
-            for (int j = 1; j <= N; j++) {
-                map[i][j] = Integer.parseInt(st.nextToken());
-            }
+        public Step(int emoticon_num, int clipboard_num, int time) {
+            this.emoticon_num = emoticon_num;
+            this.clipboard_num = clipboard_num;
+            this.time = time;
         }
-
-        dfs(1, 2, 0);
-
-        bw.write(answer + "\n");
-        bw.close();
-        br.close();
     }
 
-    public static void dfs(int x, int y, int d) {
-        if (x == N && y == N) {
-            answer++;
-        }
+    static boolean[][] visited;
+    static int S;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        S = Integer.parseInt(br.readLine());
 
-        for (int i = 0; i < 3; i++) {
-            if (d == 0 && i == 1) {
-                continue;
+        visited = new boolean[2001][2001]; // 행: 화면 이모티콘의 개수, 열:클립보드 이모티콘 개수
+
+        bfs();
+    }
+
+    public static void bfs() {
+        Queue<Step> queue = new LinkedList<>();
+        queue.add(new Step(1, 0, 0));
+
+        while (!queue.isEmpty()) {
+            Step now = queue.poll();
+
+            int emoticon_num = now.emoticon_num;
+            int clipboard_num = now.clipboard_num;
+            int time = now.time;
+
+            if(emoticon_num == S){
+                System.out.println(time);
+                return;
             }
-            if (d == 1 && i == 0) {
-                continue;
-            }
-            if (i == 2) { // 대각선으로 이동해야하는데 빈칸이 아닌 경우
-                if (y + 1 <= N && x + 1 <= N) {
-                    if (map[x][y + 1] != 0 || map[x + 1][y] != 0) {
-                        continue;
-                    }
+
+            if(emoticon_num > 0 && emoticon_num < 2000){
+                // 1. 복사
+                if(!visited[emoticon_num][emoticon_num]){
+                    visited[emoticon_num][emoticon_num] = true;
+
+                    queue.offer(new Step(emoticon_num, emoticon_num, time + 1));
+                }
+
+                // 3. 삭제500
+                if (!visited[emoticon_num - 1][clipboard_num]) {
+                    visited[emoticon_num - 1][clipboard_num] = true;
+
+                    queue.offer(new Step(emoticon_num - 1, clipboard_num, time + 1));
                 }
             }
 
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-            if (nx > 0 && nx <= N && ny > 0 && ny <= N) {
-                if (map[nx][ny] != 1) {
-                    dfs(nx, ny, i);
+            // 2. 붙여넣기
+            if (clipboard_num > 0 && emoticon_num + clipboard_num < 2000) {
+                if (!visited[emoticon_num+clipboard_num][clipboard_num]) {
+                    visited[emoticon_num+clipboard_num][clipboard_num] = true;
+
+                    queue.offer(new Step(emoticon_num + clipboard_num, clipboard_num, time + 1));
                 }
             }
         }
