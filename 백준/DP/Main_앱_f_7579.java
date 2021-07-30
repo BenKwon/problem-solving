@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main_앱_7579 {
+public class Main_앱_f_7579 {
     public static int n, m;
     public static int[] task_m, task_c;
     public static int[] dp;
