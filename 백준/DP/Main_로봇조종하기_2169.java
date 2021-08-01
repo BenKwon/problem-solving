@@ -15,12 +15,10 @@ public class Main_로봇조종하기_2169 {
     static int[] row_move = new int[]{1, 0, 0};
     static int[] col_move = new int[]{0, 1, -1};
     static int n, m;
-//    static int k = 0;
     public static void dfs(int row, int col, int parent_row, int parent_col) {
         if (row == n && col == m) {
             return;
         }
-//        System.out.println("++k = " + ++k);
         for (int i = 0; i < 3; i++) { // i = 0 아래쪽 1 : 오른쪽 2; 왼쪽
             int n_row = row + row_move[i];
             int n_col = col + col_move[i];
@@ -31,10 +29,12 @@ public class Main_로봇조종하기_2169 {
             if(visit[row][col][i] ==1) continue;
 
             if (n_row == parent_row && n_col == parent_col) continue;
-            int target_value = -1000000001;
+
             if (Arrays.stream(visit[n_row][n_col]).sum() < 3) {
                 dfs(n_row, n_col, row, col);
             }
+
+            int target_value = -1000000001;
             for (int t = 0; t < 3; t++) {
                 if (dp[n_row][n_col][t][1] == row && dp[n_row][n_col][t][2] == col) continue;
                 if (dp[n_row][n_col][t][0] > target_value) {
@@ -42,9 +42,7 @@ public class Main_로봇조종하기_2169 {
                 }
             }
             dp[row][col][i][0] = target_value + graph[row][col];
-            dp[row][col][i][1] = n_row;
-            dp[row][col][i][2] = n_col;
-            visit[row][col][i] = 1;
+            dp[row][col][i][1] = n_row; dp[row][col][i][2] = n_col; visit[row][col][i] = 1;
         }
     }
 
@@ -68,19 +66,9 @@ public class Main_로봇조종하기_2169 {
                 }
             }
         }
+
         dp[n][m][0] = new int[]{graph[n][m], -1, -1};
-//        visit[n][m] = 1;
         dfs(1, 1, 0, 0);
-//        for (int i = 1; i <= n; i++) {
-//            System.out.println();
-//            for (int j = 1; j <= m; j++) {
-//                int max = -1000000001;
-//                for (int k = 0; k < 3; k++) {
-//                    max = Math.max(max, dp[i][j][k][0]);
-//                }
-//                System.out.printf("%d ", max);
-//            }
-//        }
         int max = -1000000001;
         for (int k = 0; k < 3; k++) {
             max = Math.max(max, dp[1][1][k][0]);
