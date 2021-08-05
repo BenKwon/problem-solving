@@ -7,20 +7,20 @@ import java.util.*;
 
 /**
  * 접근 하는 방법은 얼추 맞았으나 dp 문제인데 dp에 관해서 너무 생각을 안했다.
- *
  */
 public class Main_사회망서비스_f_2533 {
     public static int n;
     public static ArrayList<Integer>[] con_info;
-    public static int k= 0;
+    public static int k = 0;
     public static int[][] dp;
+
     public static int dfs(int cur, int parent) {
         dp[cur][1] = 1;
         dp[cur][0] = 0;
         Iterator<Integer> iterator = con_info[cur].iterator();
         while (iterator.hasNext()) {
             int next = iterator.next();
-            if(next == parent) continue;
+            if (next == parent) continue;
             dfs(next, cur);
             dp[cur][1] += Math.min(dp[next][1], dp[next][0]);
             dp[cur][0] += dp[next][1];

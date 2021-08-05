@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * 그렇다면 (0,0) (n ,n) 1번째 좌표, 2번째좌표 , 3번째 좌표... w번째 좌표라고 하고
  * dp[i][j] 는 경찰차 위치가 각각 i ,  j 번째의 위치일때 모든 사건을 해결할때 까지 걸리는 최소 거리
  * dp[경찰차1의 위치][경찰차2의 위치) = min(dp[다음에 일어난 사건의 위치][경찰차2의 위치] + 다음 사건과 경찰차1의 거리 ,
- *                                      dp[경찰차1의 위치][다음에 일어난 사건의 위치] + 다음 사건과 경찰차2의 거리)
+ * dp[경찰차1의 위치][다음에 일어난 사건의 위치] + 다음 사건과 경찰차2의 거리)
  * dp[w][j]나 dp[i][w]는 항상 0이므로
  * dp[w-1][j] 나 d[[i][w-1]부터 구해나가면 된다
  */
@@ -20,24 +20,25 @@ public class Main_경찰차_2618 {
     static int[][] visit;
     static int[][] dp;
     static int[][][] way;
-    static int k = 0;
+
+    //    static int k = 0;
     public static int dfs(int level, int car1_row, int car1_col, int car2_row, int car2_col, int car1, int car2) {
-        if(level == w + 1) return 0;
+        if (level == w + 1) return 0;
         int cur_event_row = events[level + 1][0];
         int cur_event_col = events[level + 1][1];
-        if(visit[car1][car2] == 1) {
+        if (visit[car1][car2] == 1) {
             return dp[car1][car2];
         }
         int diff1 = Math.abs(car1_row - cur_event_row) + Math.abs(car1_col - cur_event_col);
         diff1 += dfs(level + 1, cur_event_row, cur_event_col, car2_row, car2_col, level + 1, car2);
         int diff2 = Math.abs(car2_row - cur_event_row) + Math.abs(car2_col - cur_event_col);
-        diff2 += dfs(level + 1, car1_row, car1_col, cur_event_row, cur_event_col, car1 , level + 1);
-        if(diff1 < diff2){
+        diff2 += dfs(level + 1, car1_row, car1_col, cur_event_row, cur_event_col, car1, level + 1);
+        if (diff1 < diff2) {
             way[car1][car2][0] = 1;
             way[car1][car2][1] = level + 1;
             way[car1][car2][2] = car2;
 
-        }else{
+        } else {
             way[car1][car2][0] = 2;
             way[car1][car2][1] = car1;
             way[car1][car2][2] = level + 1;
@@ -46,6 +47,7 @@ public class Main_경찰차_2618 {
         visit[car1][car2] = 1;
         return dp[car1][car2];
     }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -62,17 +64,16 @@ public class Main_경찰차_2618 {
             events[i][0] = Integer.parseInt(st.nextToken());
             events[i][1] = Integer.parseInt(st.nextToken());
         }
-        int dfs = dfs(1, 1, 1, n, n,0,1);
+        int dfs = dfs(1, 1, 1, n, n, 0, 1);
         System.out.println(dfs);
-
         int row = 0;
         int col = 1;
-        while(true){
+        while (true) {
             int car_num = way[row][col][0];
             int next_row = way[row][col][1];
             int next_col = way[row][col][2];
-            bw.write(car_num +"\n");
-            if(next_col == w + 1|| next_row == w + 1)break;
+            bw.write(car_num + "\n");
+            if (next_col == w + 1 || next_row == w + 1) break;
             row = next_row;
             col = next_col;
         }
