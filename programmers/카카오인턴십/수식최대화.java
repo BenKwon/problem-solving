@@ -27,15 +27,13 @@ public class 수식최대화 {
 
         char operator = sequence[seq_type][oper];
         String[] split;
+
         switch (operator) {
             case '+':
                 split = expression.split("\\+");
                 break;
             case '-':
                 split = expression.split("-");
-                break;
-            case '*':
-                split = expression.split("\\*");
                 break;
             default:
                 split = expression.split("\\*");
@@ -48,24 +46,16 @@ public class 수식최대화 {
         for (int i = 1; i < split.length; i++) {
             if (operator == '-') {
                 long tmp = recursive(split[i], oper - 1, seq_type);
-                System.out.println("tmp = " + tmp);
-                System.out.printf("result : %d , - tmp : %d \n" ,result, tmp);
-
                 result -= tmp;
 
             } else if (operator == '+') {
                 long tmp = recursive(split[i], oper - 1, seq_type);
-                System.out.println("tmp = " + tmp);
-                System.out.printf("result : %d , + tmp : %d = \n" ,result, tmp);
-
                 result += tmp;
             } else {
                 long tmp = recursive(split[i], oper - 1, seq_type);
-                System.out.printf("result : %d , * tmp : %d = \n" ,result, tmp);
                 result *= tmp;
             }
         }
-//        System.out.println("result = " + result);
         return result;
     }
 
