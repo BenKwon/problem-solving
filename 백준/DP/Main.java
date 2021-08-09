@@ -9,10 +9,16 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
 public class Main {
+    static int[][] graph = new int[3][3];
+    public static void bfs(int[][] tmp) {
+        tmp[0][0] =3;
+    }
     public static void main(String[] args) {
-        String str = "heelo";
-        System.out.println(64 + str);
+
+        bfs(graph);
+        System.out.println("graph[0][0] = " + graph[0][0]);
 //        double min_diff = 1000000000;
 //        int min_diff_index = 0;
 //        double[] arr = new double[]{12.331, 12.3444, 12.357, 12.37, 12.383, 12.396, 12.409, 12.422, 13, 14};
