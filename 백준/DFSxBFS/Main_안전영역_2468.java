@@ -29,7 +29,6 @@ public class Main_안전영역_2468 {
             if(visit[nrow][ncol] == 1) continue;
             result += dfs(nrow, ncol);
         }
-//        System.out.println("result = " + result);
         return result;
 
     }
