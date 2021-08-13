@@ -1,39 +1,82 @@
 package 백준.DP;
 
 import java.io.*;
-import java.util.*;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.StringTokenizer;
 
 public class Main {
-    static int[][] graph = new int[3][3];
-    public static void bfs(int[][] tmp) {
-        tmp[0][0] =3;
-    }
-    public static void main(String[] args) {
+    public static int N, M;
+    public static int[][] map;
+    public static int cnt = 0;
+    public static int[] dr = {-1, 0, 1, 0}; // 북,동,남,서
+    public static int[] dc = {0, 1, 0, -1};
 
-        bfs(graph);
-        System.out.println("graph[0][0] = " + graph[0][0]);
-//        double min_diff = 1000000000;
-//        int min_diff_index = 0;
-//        double[] arr = new double[]{12.331, 12.3444, 12.357, 12.37, 12.383, 12.396, 12.409, 12.422, 13, 14};
-//        double input = 12.4;
-//        for (int i = 0; i < 100; i++) {
-//            double diff = Math.abs(input - arr[(int) i]);
-//            System.out.println("diff = " + diff);
-//            if (diff < min_diff) {
-//                min_diff = diff;
-//                min_diff_index = i;
-//            }
-//            if (arr[i] > input) break;
-//        }
-//        System.out.println("min_diff_index = " + min_diff_index);
-//        System.out.println(arr[min_diff_index]);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        map = new int[N][M];
+
+        st = new StringTokenizer(br.readLine());
+        int r = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+        int d = Integer.parseInt(st.nextToken());
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < M; j++) {
+                map[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+        clean(r, c, d);
+
+        bw.write(cnt + "\n");
+        br.close();
+        bw.flush();
+        bw.close();
     }
 
+    public static void clean(int row, int col, int direction) {
+        // 1. 현재 위치를 청소한다.
+        System.out.printf("row : %d , col :%d  , d: %d \n", row, col, direction);
+
+        if (map[row][col] == 0) {
+            map[row][col] = 2;
+            cnt++;
+        }
+
+        // 2. 왼쪽방향부터 차례대로 탐색을 진행한다.
+        boolean flag = false;
+        int origin = direction;
+        for (int i = 0; i < 4; i++) {
+            int next_d = (direction + 3) % 4;
+            int next_r = row + dr[next_d];
+            int next_c = col + dc[next_d];
+            System.out.printf(" graph[%d][%d] : %d \n",next_r,next_c, map[next_r][next_c]);
+
+            if (next_r > 0 && next_c > 0 && next_r < N && next_c < M) {
+                if (map[next_r][next_c] == 0) {   // 아직 청소하지 않은 공간이라면
+                    clean(next_r, next_c, next_d);
+                    flag = true;
+                    break;
+                }
+            }
+            direction = (direction + 3) % 4;
+        }
+
+        // 네 방향 모두 청소가 되어있거나 벽인 경우
+        if (!flag) {
+            int next_d = (origin + 2) % 4;
+            int next_br = row + dr[next_d];
+            int next_bc = col + dc[next_d];
+
+            if (next_br > 0 && next_bc > 0 && next_br < N && next_bc < M) {
+                if (map[next_br][next_bc] != 1) {
+                    clean(next_br, next_bc, origin); // 바라보는 방향 유지한 채 후진
+                }
+            }
+        }
+    }
 }
