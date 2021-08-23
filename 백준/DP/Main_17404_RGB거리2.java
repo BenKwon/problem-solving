@@ -6,6 +6,13 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+/**
+ * 첫번째부터 마지막 집까지 색깔을 칠해야한다.
+ * 첫번째집과 마지막집도 RGB거리1과는 다르게 색깔이 달라야한다.
+ * 첫번째집을 각각 red, green, blue로 따로 따로 놓고 dfs를 돌린다.
+ * 다만 dp에 값을 3개씩 저장한다.
+ * 첫번재
+ */
 public class Main_17404_RGB거리2 {
     public static int[][] cost;
     public static int n;
