@@ -6,53 +6,41 @@ import java.io.InputStreamReader;
 
 public class Main_2482_색상환 {
     public static int n, k;
-    public static int dp[][][] = new int[1001][1000][2];
-    public static int visit[][] = new int[1001][1000];
+    public static int dp[][][];
+    public static int visit[][];
     public static int mod = 1000000003;
-    public static int[] result = new int[2];
+
     public static void dfs(int level, int color) {
         if (level == k) {
             if (color == n - 1) {
-                result[0] = 0;
-                result[1] = 1;
-                dp[level][color][0] = result[0];
-                dp[level][color][1] = result[1];
+                dp[level][color][1] = 1;
                 return;
             }else{
-                result[0] = 1;
-                result[1] = 0;
-                dp[level][color][0] = result[0];
-                dp[level][color][1] = result[1];
+                dp[level][color][0] = 1;
                 return;
             }
         }
-        if(visit[level][color] == 1) {
-            result[0] = dp[level][color][0];
-            result[1] = dp[level][color][1];
-            return;
-        }
-
-        int[] sub = new int[2];
+        if(visit[level][color] == 1) return;
+        int result1 = 0;
+        int result2 = 0;
         for (int i = color + 2; i <= n - 1; i++) {
             dfs(level + 1, i);
-//            System.out.printf("rseult : [%d, %d]\n",result[0],result[1]);
-            sub[0] += result[0];
-            sub[1] += result[1];
-            sub[0] %= mod;
-            sub[1] %= mod;
+            result1 += dp[level + 1][i][0] % mod;
+            result2 += dp[level + 1][i][1] % mod;
+            result1 %= mod;
+            result2 %= mod;
         }
         visit[level][color] = 1;
-        result[0] = sub[0];
-        result[1] = sub[1];
-        dp[level][color][0] = result[0];
-        dp[level][color][1] = result[1];
-
+        dp[level][color][0] = result1;
+        dp[level][color][1] = result2;
         return;
     }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
         k = Integer.parseInt(br.readLine());
+        dp = new int[1001][1000][2];
+        visit = new int[1001][1000];
 
         for (int i = 0; i < n; i++) {
             dfs(1, i);
