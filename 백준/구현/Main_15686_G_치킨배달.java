@@ -6,7 +6,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Main_15686_치킨배달 {
+/**
+ * dfs로 풀었는데 dfs인자에 ArrayList로 치킨집을 고른 경우의수를 모아서
+ * 전해준다. 그런데 이렇게 푸는 방식은 개인적으로 좋다고 생각안함.
+ * 해당 문제가 메모리 제한 512MB라서 이렇게 풀어도 된다고 생각해서 풀었지만
+ * 대부분의 경우 이런식으로 인자에 경로를 넘겨주면 메모리 초과가 난다.
+ * 보통 비트마스킹이나 백트래킹으로 해야한다.
+ * 백트래킹 + DFS를 이용한 풀이 -> (https://steady-coding.tistory.com/23)
+ */
+public class Main_15686_G_치킨배달 {
     static int n,m;
     static int chicken_num, home_num;
     static ArrayList<Coordinate> chicken;
