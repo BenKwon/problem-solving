@@ -35,12 +35,10 @@ public class Main_행복유치원_13164 {
         int group = 0;
         int idx = 0;
         int answer = 0;
-        while(group < two_loop){
+        while (group < two_loop) {
             int[] d = diff[idx];
-            if (visit[d[1]] == 0 && visit[d[2]] == 0) {
-                group++;
-                answer += d[0];
-            }
+            group++;
+            answer += d[0];
             idx++;
         }
         System.out.println(answer);
