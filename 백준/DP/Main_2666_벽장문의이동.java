@@ -15,15 +15,10 @@ public class Main_2666_벽장문의이동 {
     static int[][][] visit;
     public static int dfs(int level, int c1, int c2) {
         if(level == k) return 0;
-        if(visit[level][c1][c2] == 1) {
-//        System.out.printf("result : %d\n", result);
-            return dp[level][c1][c2];
-        }
+        if(visit[level][c1][c2] == 1)return dp[level][c1][c2];
         int next = seq[level + 1];
         int result = next_pos(c1, c2, next);
         int tmp = 0;
-//        System.out.printf("level : %d ,next: %d, [%d, %d] \n", level,next, c1, c2);
-//        System.out.printf("result : %d\n", result);
         if (result == 0) {
             tmp = dfs(level + 1, c1, c2);
         } else if (result == 1) {
