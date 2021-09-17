@@ -7,11 +7,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+/**
+ * 사용 알고리즘 : bfs
+ * 벽을 1번만 뿌술수있다.
+ * 즉 bfs로 최단경로를 찾아가되 각 자리에 도착했을때 도착하기까지 벽을 뿌순적이 있는지 없는지에 대해서 2번 체크를 해줘야한다.
+ * visit[i][j][0] : i하고 j까지오는데 벽을 1번 뿌수고 왔을경우
+ * visit[i][j][1] : i하고 j까지오는데 벽을 1번 안 뿌수고 왔을경우
+ */
 public class Main_2206_벽부수고이동하기 {
     public static int n, m;
     static int[][] graph;
     static int[][][] visit;
-    static int[][][] dp;
     static int[] row_move = {-1, 1, 0, 0};
     static int[] col_move = {0, 0, -1, 1};
 
@@ -80,8 +86,6 @@ public class Main_2206_벽부수고이동하기 {
         m = Integer.parseInt(st.nextToken());
         graph = new int[n][m];
         visit = new int[n][m][2];
-        dp = new int[n][m][2];
-
 
         for (int i = 0; i < n; i++) {
             String str = br.readLine();
