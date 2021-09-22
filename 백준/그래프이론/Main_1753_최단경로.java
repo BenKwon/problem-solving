@@ -3,6 +3,9 @@ package 백준.그래프이론;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 다익스트라
+ */
 public class Main_1753_최단경로 {
     static class Node {
         int idx;
