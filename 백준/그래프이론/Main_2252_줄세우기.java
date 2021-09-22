@@ -3,6 +3,9 @@ package 백준.그래프이론;
 import java.io.*;
 import java.util.*;
 
+/**
+ *  위상정렬
+ */
 public class Main_2252_줄세우기 {
     static int n, m;
     static ArrayList<Integer>[] connected_info;
