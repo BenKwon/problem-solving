@@ -6,7 +6,7 @@ import java.util.*;
 /**
  *  위상정렬
  */
-public class Main_2252_줄세우기 {
+public class Main_2252_줄세우기_위상정렬 {
     static int n, m;
     static ArrayList<Integer>[] connected_info;
     static HashSet<Integer> start = new HashSet<>();

@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 다익스트라
  */
-public class Main_1753_최단경로 {
+public class Main_1753_최단경로_다익스트라 {
     static class Node {
         int idx;
         int sum;

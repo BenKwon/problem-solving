@@ -3,7 +3,7 @@ package 백준.그래프이론;
 import java.io.*;
 import java.util.*;
 
-public class Main_2623_음악프로그래밍 {
+public class Main_2623_음악프로그래밍_위상정렬 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
