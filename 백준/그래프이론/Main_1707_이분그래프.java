@@ -6,10 +6,15 @@ import java.util.HashSet;
 import java.util.StringTokenizer;
 
 /**
- * 풀이 : DFS OR BFS, HashSet
+ * 내 풀이 : DFS OR BFS, HashSet
  * dfs를 이용하여 연결되어있는 노드들을 그룹화 한다. -> 각 그룹들을 ArrayList형태로 group 에 저장해놓음
  * group에서 각 그룹을 하나씩 가져와서 dfs탐색을 하면서 각 노드들을 탐색하면서 왼쪽 Hashset에 들어가는지 오른쪽 Hashset에 들어가는지 체크한다.(각 노드들의 인접노드을 탐색하면서 set에 있는지 검사하면서)
  * 만약 두 set다 들어갈수없다면 해당 testcase의 정답은 NO
+ * 너무 어렵게 풀었다.. 결국 다른 사람풀이와 생각해보면 똑같은 방식이지만 접근법이 어렵다.
+ *
+ * 다른 사람 풀이 : 큐를 활용한 BFS
+ * BFS로 탐색하며 각 노드에 번호 1, 2를 번갈아가면서 달아준다.
+ *
  */
 public class Main_1707_이분그래프 {
     //    static int[][] graph;
@@ -45,7 +50,6 @@ public class Main_1707_이분그래프 {
             if (right.contains(nexts.get(i))) {
                 rightPut = false;
             }
-//                dfs(i, group_idx);
         }
         if (leftPut || rightPut) {
             if (leftPut) {
