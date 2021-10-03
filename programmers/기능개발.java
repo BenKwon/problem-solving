@@ -4,6 +4,9 @@ import java.util.*;
 
 /**
  * Queue, PriorityQueue
+ *
+ * 내가 생각한 모법 답안
+ * https://skd03052.tistory.com/192
  */
 class 기능개발 {
     static class node{
