@@ -6,6 +6,18 @@ import java.util.StringTokenizer;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 큐를 2개만든다..
+ * 하나는 찾아가는 백조가 방문하는 큐
+ * 하나는 water queue...
+ * 찾아가는 백조가 모든 물을 탐색하고 탐색하고나면
+ * 얼음이 녹고 하루가 지난다.
+ * 찾아가는 백조가 만나야하는 백조를 만나면 종료
+ *
+ * 주변에 한번 얼음을 녹인 물 좌표는 더 이상 얼음을 녹일 필요가 없다..
+ * 따라서 물을 녹일때 bfs로 모든 물을 탐색할 필요가 없다.. 녹여서 갓 물이된 애들만 탐색하면서 녹이면 된다.
+ *
+ */
 public class Main_백조의호수_3197 {
     static char[][] graph_char; // 1 : 물 / 2 /빙판 /3 백조
     static int r, c;
