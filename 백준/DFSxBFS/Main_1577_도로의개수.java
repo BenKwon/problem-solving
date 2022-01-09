@@ -75,6 +75,4 @@ public class Main_1577_도로의개수 {
         }
         return true;
     }
-
-
 }

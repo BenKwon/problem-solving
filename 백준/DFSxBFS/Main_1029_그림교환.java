@@ -7,7 +7,6 @@ public class Main_1029_그림교환 {
     static int n;
     static ArrayList<Integer>[] priceDrawing;
     static int max = Integer.MIN_VALUE;
-    static int[][][] dp;
     static int[][][] visit;
     static int calculateNumArtist(int bitmask){
         int num = 0;
@@ -18,17 +17,11 @@ public class Main_1029_그림교환 {
     }
     static void dfs(int artist, int price, int bitmask){
         int numOfArtist = calculateNumArtist(bitmask);
-        if(max < numOfArtist){
-            max = numOfArtist;
-        }
-//        System.out.printf("artist : %d , num : %d , bitmask : %d \n",artist,numOfArtist, bitmask);
-//        System.out.println("price = " + price);
+        if(max < numOfArtist) max = numOfArtist;
         if(visit[artist][price][bitmask] == 1) return;
         ArrayList<Integer> artists = priceDrawing[artist];
         for (int i = 1; i <= n; i++) {
-            //이미 해당 아티스트가 구매한적 있다면.
-            if((bitmask & (1<<(i - 1)))!= 0) continue;
-            if(artists.get(i) < price) continue;
+            if((bitmask & (1<<(i - 1)))!= 0 || artists.get(i) < price) continue;
             dfs(i, artists.get(i), bitmask | (1 << (i - 1)));
         }
         visit[artist][price][bitmask] = 1;
@@ -37,7 +30,6 @@ public class Main_1029_그림교환 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
         priceDrawing = new ArrayList[n + 1];
-        dp =  new int[n + 1][10][(1 << n) + 1];
         visit =  new int[n + 1][10][(1 << n) + 1];
 
         for (int i = 1; i <= n; i++) {
@@ -48,7 +40,6 @@ public class Main_1029_그림교환 {
                 priceDrawing[i].add(str.charAt(j-1) - 48);
             }
         }
-
 
         for (int i = 2; i <= n ; i++) {
             dfs(i, priceDrawing[1].get(i), 1 | (1 << (i - 1)));
