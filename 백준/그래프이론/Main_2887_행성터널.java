@@ -28,15 +28,6 @@ public class Main_2887_행성터널 {
             this.cord2 = cord2;
             this.weight = weight;
         }
-
-        @Override
-        public String toString() {
-            return "tunnel{" +
-                    "cord1=" + cord1 +
-                    ", cord2=" + cord2 +
-                    ", weight=" + weight +
-                    '}';
-        }
     }
 
     static int[] parent;
