@@ -1,4 +1,5 @@
 # problem-solving✏️
-알고리즘 풀이
-현재 티어 [ <img height="25px" width="25px" src="https://static.solved.ac/tier_small/16.svg"/>   ]  
-[solved.ac 프로필](https://solved.ac/profile/kwon5891)
+**알고리즘 풀이 코드 저장소**  
+
+[![Solved.ac 
+프로필](http://mazassumnida.wtf/api/generate_badge?boj=kwon5891)](https://solved.ac/kwon5891)
