@@ -1,4 +1,5 @@
 package programmers;
+
 import java.util.*;
 import java.util.*;
 
@@ -8,100 +9,99 @@ public class 양과늑대 {
         int[][] edges = {{0, 1}, {1, 2}, {1, 4}, {0, 8}, {8, 7}, {9, 10}, {9, 11}, {4, 3}, {6, 5}, {4, 6}, {8, 9}};
         solution(info, edges);
     }
-    static class Node{
+
+    static class Node {
         int id;
         int type; //wolf : 1, lmb: 0
         Node left;
         Node right;
         Node parent;
-        public Node(int id,int type){
+
+        public Node(int id, int type) {
             this.id = id;
-            this.type= type;
+            this.type = type;
         }
     }
-    static int n ;
+
+    static class Temp {
+        int id;
+        int mask;
+        int sheep;
+        int wolf;
+
+        public Temp(int id, int mask, int sheep, int wolf) {
+            this.id = id;
+            this.mask = mask;
+            this.sheep = sheep;
+            this.wolf = wolf;
+        }
+    }
+
+    static int n;
     static Node[] nodes;
-    static int[] visit;
+    static int[][] visit;
+
     public static int solution(int[] info, int[][] edges) {
         int answer = 0;
         n = info.length;
-        visit = new int[n];
+        visit = new int[n][1 << n];
         nodes = new Node[n];
-        for(int i = 0 ; i < n ; i++){
-            nodes[i] = new Node(i,info[i]);
+        for (int i = 0; i < n; i++) {
+            nodes[i] = new Node(i, info[i]);
         }
-        for(int i = 0 ; i < edges.length; i++){
+        for (int i = 0; i < edges.length; i++) {
             int parentId = edges[i][0];
             int childId = edges[i][1];
             Node parent = nodes[parentId];
             Node child = nodes[childId];
-            if(parent.left == null){
+            if (parent.left == null) {
                 parent.left = child;
-                child.parent =parent;
-            }else{
+                child.parent = parent;
+            } else {
                 parent.right = child;
                 child.parent = parent;
             }
         }
-        visit[0] = 1;
-        start(0,1,0);
-        return answer;
+        return answer = start();
     }
-    static int solution = 0;
-    static void start(int id, int sheep, int wolf){
-//        System.out.println("id = " + id);
-        if(sheep <= wolf) return;
-        Node startNode = nodes[id];
-        ArrayList<Integer> nexts = new ArrayList<>();
-        HashSet<Integer> seqCheck = new HashSet<>();
 
-        seqCheck.clear();
-        if(startNode.left != null && visit[startNode.left.id] == 0){
-            nexts.add(startNode.left.id);
-            seqCheck.add(startNode.left.id);
-        }
-        if(startNode.right != null && visit[startNode.right.id] == 0){
-            nexts.add(startNode.right.id);
-            seqCheck.add(startNode.right.id);
-
-        }
-        for (int i = 0; i < n; i++) {
-            if(visit[i] == 0){
-                Node next = nodes[i];
-                if(visit[next.parent.id] == 1 && !seqCheck.contains(i)){
-                    nexts.add(i);
+    static int start() {
+        Queue<Temp> q = new LinkedList<>();
+        q.add(new Temp(0, 1, 1, 0));
+        visit[0][1] = 1;
+        int max = 0;
+        while (!q.isEmpty()) {
+            Temp poll = q.poll();
+            int id = poll.id;
+            int mask = poll.mask;
+            int sheep = poll.sheep;
+            int wolf = poll.wolf;
+            if (sheep <= wolf) continue;
+            max = Math.max(max, poll.sheep);
+//            System.out.println("id = " + id);
+            for (int i = 0; i < n; i++) {
+                int checkMask = (1 << i);
+                if ((mask & checkMask) == 0) {
+                    Node parent = nodes[i].parent;
+                    int parentMask = (1 << parent.id);
+                    //갈수 있는 노드 발견
+                    if ((mask & parentMask) != 0) {
+                        Node next = nodes[i];
+                        int newMask = mask | (1 << i);
+                        if (next.type == 0 && sheep + 1 > wolf) {
+                            visit[i][mask] = 1;
+                            q.add(new Temp(i, newMask, sheep + 1, wolf));
+                        } else if(next.type ==1  && sheep > wolf + 1) {
+                            visit[i][mask] = 1;
+                            q.add(new Temp(i, newMask, sheep, wolf + 1));
+                        }
+                    }
                 }
             }
         }
-        if(nexts.size()==0) {
-            solution = Math.max(solution, sheep);
-            return;
-        }
-        int[] sort = new int[nexts.size()];
-        int[] tmpVisit = new int[nexts.size()]; //tmpVisit에  index 들어가는건 nexts의 index이지 노드의 id가아니다. visit는index가 노드의 id를 가르킨다.
-        generateSeq(nexts,tmpVisit,sort,0,sheep,wolf);
+        System.out.println("max = " + max);
+        return max;
     }
-    static void generateSeq(ArrayList<Integer> nexts, int[] tmpVisit,int[] sort,int count,int sheep, int wolf){
-        if(count == nexts.size()){
-            for(int i = 0 ; i < sort.length ;i++){
-                visit[sort[i]] = 1;
-                if(nodes[sort[i]].type == 0) sheep++;
-                else wolf++;
-//                System.out.println("--------------------------------");
-                start(sort[i],sheep,wolf);
-//                System.out.println("--------------------------------");
-                visit[sort[i]] = 0;
-            }
-            return;
-        }
-        for(int i = 0 ; i< nexts.size(); i++){
-            if(tmpVisit[i] == 0){
-                tmpVisit[i] = 1;
-                sort[count] = nexts.get(i);
-                generateSeq(nexts,tmpVisit,sort,count + 1,sheep,wolf);
-                tmpVisit[i] = 0;
-            }
-        }
-    }
+
 
 }
