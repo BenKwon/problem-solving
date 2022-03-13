@@ -2,7 +2,6 @@ package 백준;
 
 import java.io.*;
 import java.util.StringTokenizer;
-
 public class Main_1943_동전분배 {
     static int n;
     static int[] dp;
