@@ -29,7 +29,6 @@ public class Main_1943_동전분배 {
                         }
                     }
                 }
-
                 for (int v = 0; v <= 50000; v++) {
                     if(visit[v] == c + 1) {
                         dp[v] = 1;
