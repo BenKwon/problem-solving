@@ -9,9 +9,9 @@ public class Main_1943_동전분배 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        for (int t = 0; t < 3; t++) {
-            dp = new int[50001];
-            visit = new int[50001];
+        for (int t = 0; t < 1; t++) {
+            dp = new int[500001];
+            visit = new int[500001];
             n = Integer.parseInt(br.readLine());
             dp[0] = 1;
             int total = 0;
@@ -20,15 +20,15 @@ public class Main_1943_동전분배 {
                 int value = Integer.parseInt(st.nextToken());
                 int count = Integer.parseInt(st.nextToken());
                 total += value * count;
-                for (int v = 0; v <= 50000; v++) {
+                for (int v = 0; v <= 500000; v++) {
                     if (dp[v] == 1) {
                         for (int i = 1; i <= count; i++) {
-                            if (v + (value * i) > 50000) break;
+                            if (v + (value * i) > 500000) break;
                             visit[v + (value * i)] = c + 1;
                         }
                     }
                 }
-                for (int v = 0; v <= 50000; v++) {
+                for (int v = 0; v <= 500000; v++) {
                     if(visit[v] == c + 1) {
                         dp[v] = 1;
                     }
