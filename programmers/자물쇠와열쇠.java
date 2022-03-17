@@ -70,7 +70,6 @@ public class 자물쇠와열쇠 {
                     break;
                 }
             }
-            System.out.println("+++++++++++++++++++++++");
         }
 
         return answer;
@@ -78,10 +77,6 @@ public class 자물쇠와열쇠 {
 
     static boolean check(int keyPosIdx, int lockPosIdx) {
         int[] lockPos = lockPosList.get(lockPosIdx);
-        System.out.println("-----------------------------");
-        System.out.printf("lockPos [%d,%d]\n", lockPos[0], lockPos[1]);
-        System.out.printf("keyPos [%d,%d]\n", keyPosList.get(keyPosIdx)[0], keyPosList.get(keyPosIdx)[1]);
-
         boolean find = false;
         //시계방향으로 90도 회전하면서 키가 맞는지 검사
         for (int i = 0; i < 4; i++) {
@@ -96,17 +91,13 @@ public class 자물쇠와열쇠 {
                 int[] next = keyPosList.get(k);
                 int row = next[0] + rowDiff;
                 int col = next[1] + colDiff;
-                System.out.printf(" dir : %d // -> [%d, %d] ", i, row, col);
                 if(board[row][col] == 1) count = -1;
                 if (board[row][col] == 0 && inRange(row, col)) {
-                    System.out.printf("@ ");
                     count++;
                 }
             }
             System.out.println();
-            System.out.printf("cound : %d, size: %d\n",count, lockPosList.size());
             if (count == lockPosList.size()) {
-                System.out.println("solution founded");
                 find = true;
                 break;
             }
