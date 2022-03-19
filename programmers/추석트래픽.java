@@ -1,7 +1,7 @@
 package programmers;
 
 import java.util.*;
-class Solution {
+class 추석트래픽 {
     public int solution(String[] lines) {
         int answer = 0;
         int[] start_time = new int[lines.length];
